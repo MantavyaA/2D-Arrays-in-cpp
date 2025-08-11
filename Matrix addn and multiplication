@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+    cout << "Enter number of rows of matrix 1: ";
+    cin >> r1;
+    cout << "Enter number of columns of matrix 1: ";
+    cin >> c1;
+    cout << "Enter number of rows of matrix 2: ";
+    cin >> r2;
+    cout << "Enter number of columns of matrix 2: ";
+    cin >> c2;
+
+    int arr1[r1][c1], arr2[r2][c2], sum[r1][c1], product[r1][c2];
+
+    cout << "Enter elements of matrix 1:" << endl;
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c1; j++) {
+            cin >> arr1[i][j];
+        }
+    }
+
+    cout << "Enter elements of matrix 2:" << endl;
+    for (int i = 0; i < r2; i++) {
+        for (int j = 0; j < c2; j++) {
+            cin >> arr2[i][j];
+        }
+    }
+
+    if (r1 == r2 && c1 == c2) {
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                sum[i][j] = arr1[i][j] + arr2[i][j];
+            }
+        }
+        cout << "Sum of matrices:" << endl;
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                cout << sum[i][j] << " ";
+            }
+            cout << endl;
+        }
+    } else {
+        cout << "Matrices cannot be added." << endl;
+    }
+
+    if (c1 == r2) {
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                product[i][j] = 0;
+            }
+        }
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                for (int k = 0; k < c1; k++) {
+                    product[i][j] += arr1[i][k] * arr2[k][j];
+                }
+            }
+        }
+        cout << "Product of matrices:" << endl;
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                cout << product[i][j] << " ";
+            }
+            cout << endl;
+        }
+    } else {
+        cout << "Matrices cannot be multiplied." << endl;
+    }
+
+    return 0;
+}
+
+
+EXPECTED OUTPUT :
+
+Enter number of rows of matrix 1: 2
+Enter number of columns of matrix 1: 2
+Enter number of rows of matrix 2: 2
+Enter number of columns of matrix 2: 2
+Enter elements of matrix 1:
+1 2
+3 4
+Enter elements of matrix 2:
+5 6
+7 8
+Sum of matrices:
+6 8
+10 12
+Product of matrices:
+19 22
+43 50
+
+
+
